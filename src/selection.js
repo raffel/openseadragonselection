@@ -315,6 +315,15 @@
             return this;
         },
 
+        highlight: function(rect) {
+            var element = document.createElement('div');
+            element.className = 'openseadragon-overlay';
+            var location = this.viewer.viewport.imageToViewportRectangle(
+                new OpenSeadragon.Rect(rect.x, rect.y, rect.width, rect.height));
+            this.viewer.addOverlay(element, location);
+            return element;
+        },
+
         undraw: function() {
             this.overlay.destroy();
             this.rect = null;
@@ -331,7 +340,7 @@
                     result = real;
                 }
                 this.viewer.raiseEvent('selection', result);
-                this.undraw();
+                // this.undraw();
             }
             return this;
         },
