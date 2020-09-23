@@ -311,7 +311,7 @@
             if (this.rect) {
                 this.overlay.update(this.rect.normalize());
                 this.overlay.drawHTML(this.viewer.drawer.container, this.viewer.viewport);
-                this.viewer.raiseEvent('selection_active', {active: true});
+                this.confirm();
             }
             return this;
         },
