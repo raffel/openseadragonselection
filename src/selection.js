@@ -327,7 +327,6 @@
 
         undraw: function() {
             this.overlay.destroy();
-            this.viewer.raiseEvent('selection_active', {active: false});
             this.rect = null;
             return this;
         },
@@ -424,7 +423,11 @@
         this.rectDone = true;
     }
 
-    function onClick() {
+    function onClick(e) {
+        if (e.originalEvent.target.tagName.toLowerCase() === 'canvas') {
+          this.undraw();
+          this.viewer.raiseEvent('selection', null);
+        }
         this.viewer.canvas.focus();
     }
 
