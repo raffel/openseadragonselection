@@ -409,6 +409,9 @@
     function onOutsideDragEnd() {
         // Resizing a selection will function
         // when drawn any direction
+        if (!this.rect) {
+            return;
+        }
         if (this.rect.width < 0){
             this.rect.x += this.rect.width;
             this.rect.width = Math.abs(this.rect.width);
@@ -515,6 +518,9 @@
     // After you have completed dragging, ensure the top left of the selection
     // box is still the top left corner of the box
     function onBorderDragEnd(){
+        if (!this.rect) {
+            return;
+        }
         if (this.rect.width < 0){
             this.rect.x += this.rect.width;
             this.rect.width = Math.abs(this.rect.width);
